@@ -32,17 +32,29 @@ Imagine you'd like to rename
 
 Creates an attribute accessor for `:new_method` and redirects `:old_method` to it.
 
-    refactor_method old_method, new_method
+    refactor_method :user, :buyer
+    refactor_method :user, :seller
+    refactor_method :amount, :credits
     
-## Configure the Refactorer
+This will have these effects:
 
-You are able to override the deprecation_method to fit your needs.
+     Remove **user** in UnitTransaction.
+     Missing migration for UnitTransaction **buyer**.
+     Remove **user** in UnitTransaction.
+     Missing migration for UnitTransaction **seller**.
+     Remove **amount** in UnitTransaction.
+     Missing migration for UnitTransaction **credits**.
 
-    # config/initializers/currency_updater.rb
-    
-    Refactor.setup do |config|
-      config.deprecation_method = lambda {|old_method, new_method| 1.2345 }
-    end
+After deleting `user` and `amount` you have these warnings left:
+
+    Missing migration for UnitTransaction **buyer**.
+    Remove **user** in UnitTransaction.
+    Missing migration for UnitTransaction **seller**.
+    Missing migration for UnitTransaction **credits**.
+
+Additionally you have warnings, whenever you execute code.
+
+I like it because when running the test suite, I can see beforehand where methods are which I'd like to refactor. Otherwise you have failing tests where dependencies overshadow the actual source of your planned refactoring.
 
 ## Changelog
 
