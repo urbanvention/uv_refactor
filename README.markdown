@@ -38,12 +38,12 @@ Creates an attribute accessor for `:new_method` and redirects `:old_method` to i
     
 This will have these effects:
 
-     Remove **user** in UnitTransaction.
-     Missing migration for UnitTransaction **buyer**.
-     Remove **user** in UnitTransaction.
-     Missing migration for UnitTransaction **seller**.
-     Remove **amount** in UnitTransaction.
-     Missing migration for UnitTransaction **credits**.
+    Remove **user** in UnitTransaction.
+    Missing migration for UnitTransaction **buyer**.
+    Remove **user** in UnitTransaction.
+    Missing migration for UnitTransaction **seller**.
+    Remove **amount** in UnitTransaction.
+    Missing migration for UnitTransaction **credits**.
 
 After deleting `user` and `amount` you have these warnings left:
 
@@ -58,6 +58,7 @@ I like it because when running the test suite, I can see beforehand where method
 
 ## Changelog
 
+* 2010-11-22: better stacktrace output
 * 2010-11-21: Project created (0.0.1)
 
 ## Contributors

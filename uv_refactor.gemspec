@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "uv_refactor"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.require_paths = ["lib"]
   s.files = [ "Gemfile",
               "Gemfile.lock",

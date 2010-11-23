@@ -38,17 +38,12 @@ module Refactor
       end
 
       def refactor_warning(warning)
-        #         if defined?(logger)
-        #           logger.warn warning
-        #         else
         Warnings << warning
         warn warning
-        #         end
       end
 
       def prettify(origin)
-        stack_trace_line = origin[3]
-        only_file_and_filenumber = stack_trace_line.gsub(/:in.*$/,"")
+        stack_trace_line = origin.to_s.split(':in `block').first
       end
     end
   end

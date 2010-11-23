@@ -7,7 +7,7 @@ module Refactor
     if klass.instance_methods.include?(old_method)
       Deprecation.remove_old_method(old_method,
                                     klass,
-                                    eval("caller(0)", &lambda{}))
+                                    caller(0)[1])
     end
 
     unless klass.instance_methods.include?(new_method)
@@ -21,8 +21,7 @@ module Refactor
       Deprecation.
         renaming_warning(old_method,
                          new_method,
-                         # 3rd stacktrace element from caller
-                         eval("caller(0)", &lambda {}))
+                         caller(0)[1])
       send(new_method, *args, &block)
     end
   }
